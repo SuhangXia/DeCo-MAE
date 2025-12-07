@@ -1,3 +1,9 @@
+This is the final, complete, and professionally structured English version of your `README.md` for your GitHub repository.
+
+I have included the correct author list, the specialized hardware requirements, and the contribution breakdown based on your request.
+
+-----
+
 # DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition
 
 **[7CCEMSAP Final Project]** | **Suhang Xia, Ruiyi Hu, Muye Yuan** (King's College London)
@@ -43,6 +49,28 @@ pip install transformers decord scikit-learn pandas matplotlib seaborn opencv-py
 
 -----
 
+## 📂 Data Preparation
+
+The code expects the **HRI30** dataset to be structured by Class ID (1-30).
+
+```
+/root/hri30/
+├── train/                  # ✅ Structured training videos (Class ID folders)
+├── train_set/              # 原始训练视频 (Source: All videos mixed)
+├── test_set/               # Raw test videos
+└── train_set_labels.csv    # Labels mapping filenames to IDs
+```
+
+### 1\. Structure Raw Data (If Needed)
+
+If your original videos are currently mixed in the `train_set/` folder, run the **`organize_data.py`** script to automatically classify and move them into the required `train/1`, `train/2`, etc., structure:
+
+```bash
+python organize_data.py
+```
+
+-----
+
 ## 🚀 Quick Start: Generate Submission (`test_set_labels.csv`)
 
 This is the required final step for the 7CCEMSAP Coursework. Follow these steps to generate the final CSV using our best model:
@@ -55,7 +83,7 @@ This is the required final step for the 7CCEMSAP Coursework. Follow these steps 
     ```
 
 2.  **Run Inference**:
-    This script uses the 85.80% model to predict labels for the test set.
+    This script generates the final CSV file using the **85.80%** model.
 
     ```bash
     python inference.py
@@ -63,6 +91,36 @@ This is the required final step for the 7CCEMSAP Coursework. Follow these steps 
 
 3.  **Output**:
     The file `test_set_labels.csv` is generated in the root directory.
+
+-----
+
+## 🔬 Reproducing Training (3-Stage Pipeline)
+
+To fully verify the paper's ablation studies and final SOTA result:
+
+### Stage 1: Zero-Shot Verification
+
+```bash
+python train_stage1_zeroshot.py
+```
+
+  * **Verifies**: Semantic generalization.
+
+### Stage 2: Robustness Training (Strong Augmentation)
+
+```bash
+python train_stage2_robust.py
+```
+
+  * **Goal**: Learn robust features (Acc $\sim$82.84%).
+
+### Stage 3: Cool-down Fine-tuning
+
+```bash
+python train_stage3_cooldown.py
+```
+
+  * **Goal**: Achieve **85.80%** Final Accuracy.
 
 -----
 
@@ -79,4 +137,5 @@ This is the required final step for the 7CCEMSAP Coursework. Follow these steps 
 
 ## 📧 Contact
 
-For technical questions, please contact **Suhang Xia** (`suhang.xia@kcl.ac.uk`).
+**Suhang Xia** King's College London  
+Email: `suhang.xia@kcl.ac.uk`
