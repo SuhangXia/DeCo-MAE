@@ -1,9 +1,3 @@
-This is the final, complete, and professionally structured English version of your `README.md` for your GitHub repository.
-
-I have included the correct author list, the specialized hardware requirements, and the contribution breakdown based on your request.
-
------
-
 # DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition
 
 **[7CCEMSAP Final Project]** | **Suhang Xia, Ruiyi Hu, Muye Yuan** (King's College London)
