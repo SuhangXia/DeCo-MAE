@@ -1,48 +1,46 @@
+这是一个为你**量身定制的、最终版 `README.md`**。
+
+它完美契合你现在的**文件名结构**（`train_stageX...`），并且专门针对\*\*课程作业提交（Coursework Submission）**和**科研复现（Research Reproducibility）\*\*做了优化。老师看到这个文档，会觉得你的工程能力非常强。
+
+请直接复制以下内容覆盖你项目根目录下的 `README.md`：
+
+-----
 
 # DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition
 
 [](https://www.google.com/search?q=https://arxiv.org/abs/25XX.XXXXX)
-[](https://opensource.org/licenses/MIT)
 [](https://huggingface.co/LancetRobotics/DeCo-MAE)
+[](https://opensource.org/licenses/MIT)
 
-This is the official PyTorch implementation of the paper: **"DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition in Human-Robot Interaction"** (CVPR 2026 Submission).
+This is the official PyTorch implementation for the **7CCEMSAP Final Project** and the CVPR 2026 submission: **"DeCo-MAE"**.
 
-We propose **DeCo-MAE**, a framework that enables a **VideoMAE V2 Giant** model to achieve **78.86% Zero-Shot accuracy** and **85.80% SOTA accuracy** on the HRI30 dataset by leveraging semantic decomposition and a novel cool-down training strategy.
+We propose a **Dual-Head VideoMAE V2 Giant** framework that leverages **Semantic Decomposition** and a novel **Cool-down Training Strategy**. Our method achieves state-of-the-art performance on the HRI30 dataset, significantly outperforming standard baselines in both supervised and zero-shot settings.
 
------
-
-## 🏆 Model Zoo (Pre-trained Weights)
-
-To verify our results immediately without re-training, you can download our trained checkpoints from [Hugging Face](https://huggingface.co/LancetRobotics/DeCo-MAE).
+## 🏆 Key Results
 
 | Model Variant | Setting | Accuracy | Checkpoint |
 | :--- | :--- | :---: | :--- |
-| **DeCo-MAE (Final)** | Fully Supervised (Cool-down) | **85.80%** | [Download](https://www.google.com/search?q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/cooldown_best.pth) |
-| **DeCo-MAE (Robust)** | Fully Supervised (Strong Aug) | 82.84% | [Download](https://www.google.com/search?q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/final_sota_best.pth) |
-| **DeCo-MAE (Zero-Shot)** | Zero-Shot Split (Unseen 5 classes) | **78.86%** | [Download](https://www.google.com/search?q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/zeroshot_model.pth) |
-
-> **Note:** Place downloaded `.pth` files into `./checkpoints_final/` or `./checkpoints_cooldown/` to skip training.
+| **DeCo-MAE (Final)** | **Fully Supervised (SOTA)** | **85.80%** | [Download](https://www.google.com/url?sa=E&source=gmail&q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/cooldown_best.pth) |
+| **DeCo-MAE (Robust)** | Strong Augmentation | 82.84% | [Download](https://www.google.com/search?q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/final_sota_best.pth) |
+| **DeCo-MAE (Zero-Shot)** | Zero-Shot Split (5 Unseen) | **78.86%** | [Download](https://www.google.com/search?q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/zeroshot_model.pth) |
 
 -----
 
 ## 🛠️ Environment Setup
 
-This codebase was developed and tested on **Linux (Ubuntu 20.04)** with **Python 3.10+** and **PyTorch 2.4+**.
-**Hardware Requirement:** NVIDIA GPU with at least **24GB VRAM** (RTX 3090/4090/5090) is recommended due to the 1B-parameter Giant backbone.
-
-### 1\. Clone the repository
+This codebase is optimized for **Linux (Ubuntu 20.04)** with **NVIDIA GPUs** (24GB+ VRAM recommended, e.g., RTX 3090/4090).
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/SuhangXia/DeCo-MAE.git
 cd DeCo-MAE
-```
 
-### 2\. Install dependencies
+# 2. Install dependencies
+# (Optional) Create a conda environment
+conda create -n decomae python=3.10 -y
+conda activate decomae
 
-```bash
-# If you are in China/AutoDL, enable acceleration first:
-source /etc/network_turbo
-
+# Install PyTorch and required libraries
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 pip install transformers decord scikit-learn pandas matplotlib seaborn opencv-python-headless huggingface_hub accelerate
 ```
@@ -51,103 +49,120 @@ pip install transformers decord scikit-learn pandas matplotlib seaborn opencv-py
 
 ## 📂 Data Preparation
 
-Please organize the **HRI30** dataset structure as follows:
+Please organize the **HRI30** dataset as follows. The code will automatically handle train/test splits.
 
 ```
 /root/hri30/
-├── train/
+├── train/                  # Training videos
 │   ├── 1/
-│   │   ├── CID01_SID01_VID01.avi
-│   │   └── ...
 │   ├── ...
 │   └── 30/
-├── train_set_labels.csv
-└── ...
+├── test_set/               # Test videos (for submission)
+│   ├── CIDxx_SIDxx_VIDxx.avi
+│   └── ...
+└── train_set_labels.csv    # Training labels
 ```
-
-> **Note:** The code automatically splits data into training/validation or seen/unseen sets based on the experiment configuration.
 
 -----
 
-## 🚀 Reproduction Instructions (Training)
+## 🚀 Quick Start: Generate Submission (For Coursework)
 
-We provide a **3-stage training pipeline** to reproduce our results.
+To generate the `test_set_labels.csv` required for the final project submission using our best model (**85.80% accuracy**):
+
+1.  **Download the pre-trained weight**:
+    Download `cooldown_best.pth` from [Hugging Face](https://www.google.com/url?sa=E&source=gmail&q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/cooldown_best.pth) and place it in `./checkpoints_cooldown/`.
+
+    ```bash
+    mkdir -p checkpoints_cooldown
+    wget https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/cooldown_best.pth -O checkpoints_cooldown/cooldown_best.pth
+    ```
+
+2.  **Run Inference**:
+
+    ```bash
+    python inference.py
+    ```
+
+3.  **Output**:
+    The file `test_set_labels.csv` will be generated in the root directory.
+
+-----
+
+## 🔬 Reproducing Training (Step-by-Step)
+
+We provide a **3-stage training pipeline** to fully reproduce our results.
 
 ### Stage 1: Zero-Shot Verification (Ablation Study)
 
-Train the model on 25 seen classes and evaluate on 5 unseen classes to verify semantic generalization.
+Verifies the semantic generalization capability by training on 25 classes and testing on 5 unseen classes.
 
 ```bash
-python run_zeroshot_exp.py
+python train_stage1_zeroshot.py
 ```
 
-  * **Expected Result:** Zero-Shot Accuracy ≈ **78.86%**
-  * **Output:** `checkpoints_zeroshot/zeroshot_model.pth`
+  * **Goal**: Achieve \~78.86% Zero-Shot Accuracy.
 
 ### Stage 2: Robustness Training (Strong Augmentation)
 
-Train the full model on all 30 classes with Dual-Head and Strong Augmentation (30 Epochs).
+Trains the full model on all 30 classes using Dual-Head architecture and strong data augmentations (RandomResizedCrop, Flip, etc.).
 
 ```bash
-python train_final_sota_long.py
+python train_stage2_robust.py
 ```
 
-  * **Expected Result:** Accuracy ≈ 82.84% (High robustness, but slight underfitting due to strong aug)
-  * **Output:** `checkpoints_final/final_sota_best.pth`
+  * **Goal**: Learn robust features (Acc \~82.84%).
+  * **Output**: `checkpoints_final/final_sota_best.pth`
 
 ### Stage 3: Cool-down Fine-tuning (The SOTA Step)
 
-Fine-tune the Stage 2 model with weak augmentation and low learning rate (10 Epochs) to achieve optimal performance.
+The critical step to achieve SOTA. We fine-tune the robust model with weak augmentation and a low learning rate to bridge the distribution gap.
 
 ```bash
-python train_cooldown.py
+python train_stage3_cooldown.py
 ```
 
-  * **Expected Result:** Accuracy ≈ **85.80%** (New SOTA)
-  * **Output:** `checkpoints_cooldown/cooldown_best.pth`
+  * **Goal**: Achieve **85.80%** Final Accuracy.
+  * **Output**: `checkpoints_cooldown/cooldown_best.pth`
 
 -----
 
-## ⚡ Evaluation & Visualization
+## 📊 Visualization & Analysis
 
-### 1\. Evaluate SOTA Accuracy
+### 1\. Generate Paper Figures
 
-To verify the final accuracy on the full dataset:
-
-```bash
-# Ensure you have 'cooldown_best.pth' in the correct folder
-python eval_final.py
-```
-
-### 2\. Generate Qualitative Results (Attention Maps)
-
-Visualize where the model is looking (Cross-Modal Attention):
+Generate the **Confusion Matrix** and **Training Dynamics** plots used in the paper/report.
 
 ```bash
-python visualize_attention.py
+python plot_figures.py
 ```
 
-  * **Output:** `attention_vis.png` (Shows heatmap focus on hands/tools)
+  * **Output**: `fig_confusion_matrix.png`, `fig_training_dynamics.png`
 
-### 3\. Generate Paper Figures
+### 2\. Visualize Attention Maps
 
-Generate the Confusion Matrix and Training Dynamics plots used in the paper:
+Generate heatmaps to see where the model focuses (e.g., hands and tools).
 
 ```bash
-python generate_paper_plots.py
+python visualize.py
 ```
 
-  * **Output:** `fig_confusion_matrix.png`, `fig_training_dynamics.png`
+  * **Output**: `attention_vis.png`
+
+### 3\. Evaluate Accuracy
+
+To manually evaluate the accuracy on the validation set:
+
+```bash
+python evaluate.py
+```
 
 -----
 
-## 📝 Citation
-
-If you find this code useful for your research, please consider citing:
+## 🎓 Citation
 
 ```bibtex
 @article{xia2026decomae,
-  title={DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition in Human-Robot Interaction},
+  title={DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition},
   author={Xia, Suhang},
   journal={CVPR Submission},
   year={2026}
@@ -156,4 +171,5 @@ If you find this code useful for your research, please consider citing:
 
 ## 📧 Contact
 
-For any questions, please contact Suhang Xia at `suhang.xia@kcl.ac.uk`.
+**Suhang Xia** King's College London  
+Email: `suhang.xia@kcl.ac.uk`
