@@ -1,6 +1,6 @@
 # DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition
 
-**[7CCEMSAP Final Project]** | Suhang Xia, Ruiyi Hu, Muye Yuan (King's College London)
+**[7CCEMSAP Final Project]** | **Suhang Xia, Ruiyi Hu, Muye Yuan** (King's College London)
 
 [](https://www.google.com/search?q=https://arxiv.org/abs/25XX.XXXXX)
 [](https://huggingface.co/LancetRobotics/DeCo-MAE)
