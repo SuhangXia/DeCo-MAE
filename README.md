@@ -4,7 +4,7 @@
 [](https://huggingface.co/LancetRobotics/DeCo-MAE)
 [](https://opensource.org/licenses/MIT)
 
-This is the official PyTorch implementation for the **7CCEMSAP Final Project** and the CVPR 2026 submission: **"DeCo-MAE"**.
+This is the official PyTorch implementation for the **7CCEMSAP Final Project**.
 
 We propose a **Dual-Head VideoMAE V2 Giant** framework that leverages **Semantic Decomposition** and a novel **Cool-down Training Strategy**. Our method achieves state-of-the-art performance on the HRI30 dataset, significantly outperforming standard baselines in both supervised and zero-shot settings.
 
