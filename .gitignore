@@ -1,0 +1,20 @@
+# 忽略所有权重文件 (太大了，不能传 GitHub)
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# 忽略数据集
+train/
+test_set/
+*.avi
+*.mp4
+
+# 忽略 Python 缓存和系统文件
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# 忽略环境配置
+.env
