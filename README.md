@@ -148,18 +148,6 @@ To manually evaluate the accuracy on the validation set:
 python evaluate.py
 ```
 
------
-
-## 🎓 Citation
-
-```bibtex
-@article{xia2026decomae,
-  title={DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition},
-  author={Xia, Suhang},
-  journal={CVPR Submission},
-  year={2026}
-}
-```
 
 ## 📧 Contact
 
