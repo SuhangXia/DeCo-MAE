@@ -20,7 +20,7 @@ We propose a **Dual-Head VideoMAE V2 Giant** framework that leverages **Semantic
 
 ## 🛠️ Environment Setup
 
-This codebase is optimized for **Linux (Ubuntu 20.04)** with **NVIDIA GPUs** (24GB+ VRAM recommended, e.g., RTX 3090/4090).
+This codebase is optimized for **Linux (Ubuntu 20.04)** with **NVIDIA GPUs** (32GB+ VRAM recommended, e.g., RTX 5090).
 
 ```bash
 # 1. Clone the repository
