@@ -1,11 +1,3 @@
-这是一个为你**量身定制的、最终版 `README.md`**。
-
-它完美契合你现在的**文件名结构**（`train_stageX...`），并且专门针对\*\*课程作业提交（Coursework Submission）**和**科研复现（Research Reproducibility）\*\*做了优化。老师看到这个文档，会觉得你的工程能力非常强。
-
-请直接复制以下内容覆盖你项目根目录下的 `README.md`：
-
------
-
 # DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition
 
 [](https://www.google.com/search?q=https://arxiv.org/abs/25XX.XXXXX)
