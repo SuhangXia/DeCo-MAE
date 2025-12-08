@@ -20,14 +20,23 @@ We propose a **Dual-Head VideoMAE V2 Giant** framework that achieves **85.80% SO
 
 ## 🛠️ Environment Setup
 
-This codebase is optimized for **Linux** with **Python 3.10+**.
+This project is optimized for running on a **GPU server**, rather than a laptop.  
+All experiments, reproducibility tests, and the final coursework submission were executed on the following configuration:
 
-### ⚠️ Hardware Requirement (Crucial for Reproduction)
+### ✅ Recommended Server Configuration (Tested)
 
-Due to the size of the **VideoMAE V2 Giant** backbone (over 1 billion parameters), a high-VRAM GPU is required for training:
+- **Operating System:** Ubuntu 22.04  
+- **Python Version:** 3.12  
+- **PyTorch Version:** 2.8.0 (CUDA 12.8 build)  
+- **CUDA Toolkit:** 12.8  
+- **GPU:** 1 × NVIDIA **RTX 5090 (32 GB VRAM)**  
+- **CPU:** 25 vCPU **Intel(R) Xeon(R) Platinum 8470Q**  
 
-  * **Minimum VRAM:** 24GB
-  * **Recommended VRAM:** **32GB+** (e.g., **NVIDIA RTX 5090** or higher)
+Due to the size of the **VideoMAE V2 Giant** backbone (over 1 billion parameters and a 4.11 GB model file),  
+we strongly recommend using a GPU with **≥ 32 GB VRAM**.  
+Inference and training are **not feasible on CPU-only machines**.
+
+Any machine with an RTX 4090 / A5000 / A100 / L40 or higher will also work reliably.
 
 ### Installation Steps
 
@@ -44,6 +53,8 @@ pip install transformers decord scikit-learn pandas matplotlib seaborn opencv-py
 -----
 
 ## 📂 Data Preparation
+
+> **Note:** The following data layout is required for successful reproduction. Please make sure that the HRI30 dataset is already prepared in the structure shown below before running the code. This includes placing the training videos, test videos, and label CSV in the specified folders. The code assumes that all paths follow this structure; otherwise, `inference.py` and the training scripts may not locate the necessary files.
 
 The code expects the **HRI30** dataset to be structured by Class ID (1-30).
 
