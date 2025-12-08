@@ -13,7 +13,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # 🔥 强行指定国内镜像
-#os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 # ================= 配置 =================
