@@ -18,10 +18,10 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 # ================= 配置 =================
 # 使用最强的 Cool-down 模型 (85.80%)
-CKPT_PATH = "/root/autodl-tmp/checkpoints_cooldown/cooldown_best.pth"
+CKPT_PATH = os.path.join(os.path.dirname(__file__), "checkpoints_cooldown", "cooldown_best.pth")
 BERT_ID = "bert-base-uncased"
 MODEL_ID = "OpenGVLab/VideoMAEv2-giant"
-CACHE_DIR = "/root/autodl-tmp/hf_cache"
+CACHE_DIR = os.path.join(os.path.dirname(__file__), "hf_cache")
 
 # 测试集路径
 TEST_DIR = "/root/hri30/test_set" 
