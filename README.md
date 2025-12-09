@@ -16,6 +16,17 @@ We propose a **Dual-Head VideoMAE V2 Giant** framework that achieves **85.80% SO
 | **DeCo-MAE (Robust)** | Strong Augmentation | 82.84% | [Download](https://www.google.com/search?q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/final_sota_best.pth) |
 | **DeCo-MAE (Zero-Shot)** | Zero-Shot Split (5 Unseen) | **78.86%** | [Download](https://www.google.com/search?q=https://huggingface.co/LancetRobotics/DeCo-MAE/resolve/main/zeroshot_model.pth) |
 
+
+-----
+
+## 📄 Project Report (PDF)
+
+For detailed explanations of our methodology, experiments, ablation studies, and discussion,  
+please refer to the full project report:
+
+### 👉 **[📘 View Report (Report.pdf)](./Report.pdf)**  
+*(Opens directly in GitHub with built-in PDF viewer; downloadable)*
+
 -----
 
 ## 🛠️ Environment Setup
