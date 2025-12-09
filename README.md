@@ -19,13 +19,13 @@ We propose a **Dual-Head VideoMAE V2 Giant** framework that achieves **85.80% SO
 
 -----
 
-## 📄 Project Report (PDF)
 
-For detailed explanations of our methodology, experiments, ablation studies, and discussion,  
-please refer to the full project report:
+## 📄 Project Documents
 
-### 👉 **[📘 View Report (Report.pdf)](./Report.pdf)**  
-*(Opens directly in GitHub with built-in PDF viewer; downloadable)*
+| 📘 **Report** | 🖼️ **Poster** |
+|--------------|----------------|
+| [View / Download Report.pdf](./Report.pdf) | [View / Download Poster.pdf](./Poster.pdf) |
+
 
 -----
 
