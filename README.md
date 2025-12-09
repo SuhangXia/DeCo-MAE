@@ -26,7 +26,9 @@ We propose a **Dual-Head VideoMAE V2 Giant** framework that achieves **85.80% SO
 |--------------|----------------|
 | [View / Download DeCo-MAE_Report_v09.pdf](./DeCo-MAE_Report_v09.pdf) | [View / Download Poster.pdf](./Poster.pdf) |
 
-**Zenodo DOI:** https://doi.org/10.5281/zenodo.17867913
+**Zenodo DOI:** [https://doi.org/10.5281/zenodo.17867913](https://doi.org/10.5281/zenodo.17867913)
+
+
 
 -----
 
