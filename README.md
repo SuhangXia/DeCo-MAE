@@ -26,6 +26,7 @@ We propose a **Dual-Head VideoMAE V2 Giant** framework that achieves **85.80% SO
 |--------------|----------------|
 | [View / Download DeCo-MAE_Report_v09.pdf](./DeCo-MAE_Report_v09.pdf) | [View / Download Poster.pdf](./Poster.pdf) |
 
+**Zenodo DOI:** https://doi.org/10.5281/zenodo.17867913
 
 -----
 
@@ -149,23 +150,8 @@ python train_stage3_cooldown.py
 | **Muye Yuan** | Poster Design and Final Presentation Assistance. |
 
 -----
-## 📚 Citation
 
-If you use DeCo-MAE in your research or coursework, please cite our technical report:
 
-**Zenodo DOI:** https://doi.org/10.5281/zenodo.17867913
-
-```bibtex
-@misc{xia2025deco_mae,
-  title        = {DeCo-MAE: Decomposing Semantics for Compositional Zero-Shot Action Recognition},
-  author       = {Xia, Suhang and Hu, Ruiyi and Yuan, Muye},
-  year         = {2025},
-  doi          = {10.5281/zenodo.17867913},
-  url          = {https://doi.org/10.5281/zenodo.17867913},
-  note         = {Technical Report, version 0.9}
-}
-```
------
 ## 📧 Contact
 
 **Suhang Xia** King's College London  
