@@ -61,7 +61,7 @@ The code expects the **HRI30** dataset to be structured by Class ID (1-30).
 ```
 /root/hri30/
 ├── train/                  # ✅ Structured training videos (Class ID folders)
-├── train_set/              # train original vedio (Source: All videos mixed)
+├── train_set/              # 原始训练视频 (Source: All videos mixed)
 ├── test_set/               # Raw test videos
 └── train_set_labels.csv    # Labels mapping filenames to IDs
 ```
